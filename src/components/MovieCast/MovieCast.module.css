@@ -1,0 +1,41 @@
+.castContainer {
+  padding: 20px;
+}
+
+.castList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.castItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.actorImage {
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.actorDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.actorName {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.characterName {
+  font-size: 16px;
+  color: #555;
+}

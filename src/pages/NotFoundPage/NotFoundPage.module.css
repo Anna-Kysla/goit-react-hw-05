@@ -1,0 +1,15 @@
+div {
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 18px;
+}
