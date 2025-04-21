@@ -1,24 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
 import { searchMovies } from "../../services/tmdb-api";
 
 const MoviesPage = () => {
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") || "";
   const [movies, setMovies] = useState([]);
 
-  const handleSearch = async (e) => {
+  useEffect(() => {
+    if (!query) return;
+    const fetchData = async () => {
+      const results = await searchMovies(query);
+      setMovies(results);
+    };
+    fetchData();
+  }, [query]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const results = await searchMovies(query);
-    setMovies(results);
+    const form = e.currentTarget;
+    const value = form.elements.query.value.trim();
+    if (value) {
+      setSearchParams({ query: value });
+    } else {
+      setSearchParams({});
+    }
   };
 
   return (
     <div>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          name="query"
+          defaultValue={query}
           placeholder="Search movies"
         />
         <button type="submit">Search</button>

@@ -1,10 +1,13 @@
-import { useParams, Link, Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 import { fetchMovieDetails } from "../../services/tmdb-api";
 import styles from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from || "/");
+
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -18,7 +21,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div className={styles.container}>
-      <Link to="/">Go back</Link>
+      <Link to={backLinkRef.current}>Go back</Link>
       <div className={styles.movieDetails}>
         <img
           className={styles.movieImage}

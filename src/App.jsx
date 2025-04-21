@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Navigation from "./components/Navigation/Navigation";
 
-// Ледачі завантаження сторінок
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() =>
@@ -10,7 +9,6 @@ const MovieDetailsPage = lazy(() =>
 );
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
-// Компоненти для Cast та Reviews
 import MovieCast from "./components/MovieCast/MovieCast";
 import MovieReviews from "./components/MovieReviews/MovieReviews";
 
